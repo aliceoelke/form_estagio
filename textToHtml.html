@@ -1,0 +1,372 @@
+<style>
+    .conteudo {
+        margin: auto;
+        max-width: 95%;
+        width: 1200px;
+    }
+    .conteudo form.conteudocatg,
+    .input-field.col.s12.conteudocatg {
+        border: 1px solid #eee;
+        border-radius: 4px;
+        background-color: #fff;
+        -webkit-box-shadow: 0 5px 5px 0 #ddd;
+        box-shadow: 0 5px 5px 0 #ddd;
+        padding: 20px;
+        margin-top: 0;
+    }
+    #codigohtml {
+        min-height: 100%;
+        border: none;
+        overflow-y: scroll;
+    }
+    .input-field.col.s12.conteudocatg{
+        opacity: 0;
+    }
+    .input-field.col.s12.conteudocatg.codEfeito {
+        opacity: 1;
+        animation-duration: 2s;
+        animation-name: codigoefeito;
+    }
+    @-webkit-keyframes codigoefeito {
+        0% { opacity: 0; };
+        100% { opacity: 1; };
+    }
+    @keyframes codigoefeito {
+        0% { opacity: 0; };
+        100% { opacity: 1; };
+    }
+    .linksdotexto {
+        border: 2px solid #000;
+        float: left;
+        border-radius: 4px;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    .conteudocatg textarea.materialize-textarea {
+        z-index: 5000;
+    }
+    .conteudocatg p{
+        font-size: 12px;
+        color: red;
+    }
+    .mais-info {
+        display: none;
+    }
+    .mais-info.conteudo-open {
+        display: block;
+    }
+    .waves-effect.waves-light.btn.close {
+        display: none;
+    }
+    span.btn {
+        margin: 0 5px 5px;
+    }
+</style>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <title>Descrição do conteúdo</title>
+    </head>
+    <body>
+        <div class="conteudo">
+            <h3>Conteúdo da categoria</h3>
+            <div class="row">
+                <form class="conteudocatg col s6">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea class="materialize-textarea" name="" id="title"></textarea>
+                            <label for="titulo">Tag / Título:</label>
+                        </div>
+                        <div class="linksdotexto">
+                            <div class="input-field col s6">                        
+                                <textarea class="materialize-textarea" name="" id="negrito"></textarea>
+                                <label for="negrito">Em negrito:</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <textarea class="materialize-textarea" name="" id="numPgfNegrito"></textarea>
+                                <label for="numParagrafoNegrito">Paragrafo:</label>
+                            </div>
+                        </div>
+                        <div class="linksdotexto">
+                            <div class="input-field col s12">
+                                <textarea class="materialize-textarea" name="" id="link"></textarea>
+                                <label for="link">Links:</label>
+                            </div>                    
+                            <div class="input-field col s12">
+                                <textarea class="materialize-textarea" name="" id="palavra"></textarea>
+                                <label for="palavra">Palavra:</label>
+                            </div>
+                            <span class="btn-floating waves-effect waves-light btn" data-mais="1"><i class="material-icons">add</i></span>
+                            <div class="mais-info" data-conteudo="1">
+                                <div class="input-field col s6">
+                                    <textarea class="materialize-textarea" name="" id="numPgfLink"></textarea>
+                                    <label for="numParagrafoLink">Paragrafo:</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <textarea class="materialize-textarea" name="" id="atributos"></textarea>
+                                    <label for="atributos">Atributos:</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-field col s12">
+                            <textarea class="materialize-textarea" name="" id="text"></textarea>
+                            <label for="texto">Descrição:</label>
+                        </div>
+                        <span class="btn-floating waves-effect waves-light btn" data-mais="2"><i class="material-icons">add</i></span>
+                        <div class="mais-info" data-conteudo="2">
+                            <div class="input-field col s12">
+                                <textarea class="materialize-textarea" name="" id="italic"></textarea>
+                                <label for="italico">Em italico:</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <textarea class="materialize-textarea" name="" id="list"></textarea>
+                                <label for="lista">Lista com marcadores:</label>
+                            </div>
+                            <div class="linksdotexto">
+                                <div class="input-field col s12">
+                                    <textarea class="materialize-textarea" name="" id="densidade"></textarea>
+                                    <label for="densidade">Densidade das palavras:</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <textarea class="materialize-textarea" name="" id="totalpalavras"></textarea>
+                                    <label for="totalpalavras">Total das palavras:</label>
+                                </div>
+                                <button id="calcular" class="waves-effect waves-light btn">Calcular</button>
+                            </div>
+                        </div>
+                    </div>
+                    <p>*Separa todos os elementos por |</p>
+                    <button id="buttonConverter" class="waves-effect waves-light btn">Converter</button>
+                    <button disabled id="buttonLimpar" class="waves-effect waves-light btn">Limpar campos</button>
+                </form>
+                <div class="col s6">
+                    <div class="input-field col s12 conteudocatg">
+                        <textarea class="materialize-textarea" name="" id="codigohtml"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://cdn.rawgit.com/beautify-web/js-beautify/v1.10.3/js/lib/beautify.js"></script>
+        <script src="https://cdn.rawgit.com/beautify-web/js-beautify/v1.10.3/js/lib/beautify-css.js"></script>
+        <script src="https://cdn.rawgit.com/beautify-web/js-beautify/v1.10.3/js/lib/beautify-html.js"></script>
+        <script>
+            var doc = document;
+            var titles = doc.getElementById('title'),
+                palvNegritas = doc.getElementById('negrito'),
+                numPalvNegritas = doc.getElementById('numPgfNegrito'),
+                listademarcadores = doc.getElementById('list'),
+                palvItalicas = doc.getElementById('italic'),
+                href = doc.getElementById('link'),
+                palavraslink = doc.getElementById('palavra'),
+                numParagfLink = doc.getElementById('numPgfLink'),
+                descricao = doc.getElementById('text'),
+                atributoslink = doc.getElementById('atributos'),
+                densidade = doc.getElementById('densidade'),
+                totalpalavras = doc.getElementById('totalpalavras');
+
+            if (localStorage.length !== 0 || localStorage.length ) {
+                titles.value = localStorage.title;
+                palvNegritas.value = localStorage.bold;
+                numPalvNegritas.value = localStorage.boldparagraph;
+                listademarcadores.value = localStorage.list;
+                palvItalicas.value = localStorage.italic;
+                href.value = localStorage.link;
+                palavraslink.value = localStorage.words;
+                numParagfLink.value = localStorage.linkparagraph;
+                descricao.value = localStorage.text;
+                atributoslink.value = localStorage.atributo,                
+                densidade.value = localStorage.densidade,
+                totalpalavras.value = localStorage.totalpalavras;
+                doc.getElementById('buttonLimpar').removeAttribute('disabled');
+            }
+
+            doc.getElementById('buttonConverter').addEventListener('click', function (el){
+                el.preventDefault();
+                var titulos = titles.value,
+                    negrito = palvNegritas.value,
+                    numParagrafosNegrito = numPalvNegritas.value,
+                    list = listademarcadores.value,
+                    italic = palvItalicas.value,
+                    links = href.value,
+                    palavras = palavraslink.value,
+                    numParagrafosLink = numParagfLink.value,
+                    text = descricao.value,
+                    atributo = atributoslink.value;
+
+                if(titulos !== '' && negrito !== '' && text !== ''){
+                    // colocando os paragrafos no texto
+                    text = text.trim().replace(/\n/g, '</p>\n<p>');
+                    text = text.trim().replace(/\<p><\/p>/g, '');
+
+                    // colocando os títulos no texto
+                    var titlesArry = titulos.split('|');
+                    titlesArry.map(function(title, index){
+                        var tag = title.split('/')[0].trim().toLowerCase();
+                        var titulo = title.split('/')[1].trim();
+                        if ( index === 0 ) {
+                            text = text.replace(titulo + '</p>', '<' + tag + '>' + titulo +'</' + tag + '>\n');
+                        }
+                        text = text.replace('<p>' + titulo + '</p>', '\n<' + tag + '>' + titulo +'</' + tag + '>\n');
+                    });
+                  
+                    // colocando a lista com marcadores no texto
+                    if(list !== ''){
+                        var listArry = list.split('|');
+                        listArry.map(function(li, index){
+                            if (index === 0) {
+                                text = text.replace(li+'</p>', '<ul><li>' + li + '</li>\n\t\r');
+                            } else if ((listArry.length-1) === index){
+                                text = text.replace('<p>'+li, '<li>' + li + '</li></ul>');
+                            } else text = text.replace('<p>'+li+'</p>', '<li>' + li + '</li>\n\t\r');
+                        });
+                    }
+
+                    // colocando as palavras italicas no texto
+                    if(italic !== ''){
+                        var italicArry = italic.split('|');
+                        italicArry.map(function(italico){
+                            text = text.replace(new RegExp(italico, 'gi'), '<span style="font-style: italic;">' + italico + '</span>');
+                        });
+                    }
+
+                    textArry = text.split('<p>');
+
+                    var negritoArry = negrito.split('|'),
+                        numParagrafosNegritoArry = numParagrafosNegrito.split('|'),
+                        linksArry = links.split('|'),
+                        palavrasArry = palavras.split('|'),
+                        numParagrafosLinkArry = numParagrafosLink.split('|'),
+                        atributosArry = atributo.split('|');
+
+                    textArry.map(function(paragrafos, index) {
+                        var parteTexto = paragrafos;
+                        // colocando as palavras em negrito nos paragrafos
+                        if(numParagrafosNegrito !== ''){
+                            negritoArry.map(function(keys, palavra){
+                                if(numParagrafosNegritoArry[palavra] == index) {
+                                    paragrafos = paragrafos.replace(negritoArry[palavra], '<strong>' + negritoArry[palavra] + '</strong>');
+                                }
+                            });
+                        } else if(numParagrafosNegrito === '') {
+                            negritoArry.map(function(keys){
+                                text = text.replace(new RegExp(keys, 'gi'), '<strong>' + keys + '</strong>');
+                            });
+                        }
+                        // colocando os links nos paragrafos
+                        linksArry.map(function (link, iLink){
+                            if (atributo !== '' && atributosArry[iLink] !== 'null' && links !== '' && palavras !== '' && numParagrafosLink !== ''){
+                                paragrafos = paragrafos.replace(palavrasArry[iLink], '<a href="' + link + '" target="_blank" style="text-decoration:underline;" rel="'+ atributosArry[iLink] +'">' + palavrasArry[iLink] + '</a>')
+                            } else if(links !== '' && palavras !== '' && numParagrafosLink !== ''){
+                                if(numParagrafosLinkArry[iLink] == index) {
+                                    paragrafos = paragrafos.replace(palavrasArry[iLink], '<a href="' + link + '" target="_blank" style="text-decoration:underline;">' + palavrasArry[iLink] + '</a>')
+                                }                                
+                            } else if (links !== '' && palavras !== ''){
+                                paragrafos = paragrafos.replace(new RegExp(palavrasArry[iLink], 'g'), '<a href="' + link + '" target="_blank" style="text-decoration:underline;">' + palavrasArry[iLink] + '</a>')
+                            }
+                        });
+                        text = text.replace(parteTexto, paragrafos);
+                    });
+                    html_beautify(text);
+                    doc.getElementById('codigohtml').value = text + '</p>';
+                    doc.querySelector('.input-field.col.s12.conteudocatg').classList.add("codEfeito");
+                    doc.getElementById('buttonLimpar').removeAttribute('disabled');
+
+                    //salvando conteúdo
+                    localStorage.title = titulos;
+                    localStorage.bold = negrito;
+                    localStorage.boldparagraph = numParagrafosNegrito;
+                    localStorage.list = list;
+                    localStorage.italic = italic;
+                    localStorage.link = links;
+                    localStorage.words = palavras;
+                    localStorage.linkparagraph = numParagrafosLink;
+                    localStorage.text = descricao.value;
+                    localStorage.atributo = atributoslink.value;
+                }
+            });        
+            doc.getElementById('buttonLimpar').addEventListener('click', function(limpa){
+                limpa.preventDefault();
+                titles.value = ''; titles.style.height = 0;
+                palvNegritas.value = ''; palvNegritas.style.height = 0;
+                numPalvNegritas.value = ''; numPalvNegritas.style.height = 0;
+                listademarcadores.value = ''; listademarcadores.style.height = 0;
+                palvItalicas.value = ''; palvItalicas.style.height = 0;
+                href.value = ''; href.style.height = 0;
+                palavraslink.value = ''; palavraslink.style.height = 0;
+                numParagfLink.value = ''; numParagfLink.style.height = 0;
+                descricao.value = ''; descricao.style.height = 0;                             
+                densidade.value = ''; densidade.style.height = 0;
+                totalpalavras.value = ''; totalpalavras.style.height = 0;
+                doc.getElementById('codigohtml').value = '';
+                doc.querySelector('.input-field.col.s12.conteudocatg').classList.remove("codEfeito");
+                doc.getElementById('buttonLimpar').setAttribute('disabled', 'disabled');
+            });
+
+            var buttoMais = doc.querySelectorAll("[data-mais]");
+            var conteudo = doc.querySelectorAll("[data-conteudo]");
+
+            var clickMais = function(el) {
+                el.preventDefault();
+                var elclick = el.target || el.srcElement;
+                var at = this.getAttribute("data-mais");
+
+                this.classList.add("close");
+                conteudo[at - 1].classList.add("conteudo-open");
+            };
+            [].forEach.call(buttoMais, function(el){
+                el.addEventListener("click", clickMais, false);
+            });
+
+            doc.getElementById('codigohtml').addEventListener('contextmenu', function(el) {
+                el.preventDefault();
+
+                var linkImg = prompt("Digite o link da imagem:"),
+                    alt = prompt("Digite o alt da imagem:"),
+                    title = prompt("Digite o title da imagem:"),
+                    longdesc = prompt("Digite a descrição da imagem:");
+
+                imagem = doc.createElement('img');
+
+                imagem.src = linkImg;
+                imagem.alt = alt;
+                imagem.title = title;
+                imagem.longdesc = longdesc;
+
+                var linhasArray = this.value.split('\n');
+                var localclick = this.value.substr(0, this.selectionStart).split("\n").length;
+                var totalpularlinhas = linhasArray.length;
+
+                this.value = linhasArray.slice(0,localclick).join('\n') + '\n' + imagem.outerHTML + '\n\n' + linhasArray.slice(localclick,totalpularlinhas).join('\n');
+            });
+            doc.getElementById('calcular').addEventListener('click', function(el){
+                el.preventDefault();
+                // palavras-chaves 
+                var palavras = descricao.value.replace(/(\r\n|\n|\r|,|"|\.|\?|!|\)|\(|_|:|;|')/g," ").trim();
+                var palavras = palavras.replace(/(até |para |que |mais |sua |cada )/g," ").trim();
+                var palavrasArry = palavras.split(/\s+/g);
+                var total = palavrasArry.length;
+                var p, maior = 3, cont = 0;
+                var densi = '';
+                palavrasArry.map(function(palavra, index){
+                    if (!densi.toLowerCase().includes(palavra.toLowerCase()) && palavra.length > 3){
+                        p = descricao.value.split(palavra).length;
+                        if ((p > maior || p > 3) && cont < 20) {
+                            densi += '\n' + palavra + ': ' + (p/total);
+                            maior = p;
+                            cont++;
+                        }
+                    }
+                });
+                densidade.value = densi;
+                totalpalavras.value = total;                              
+                localStorage.densidade = densidade.value;
+                localStorage.totalpalavras = totalpalavras.value;
+            });
+        </script>
+    </body>
+</html>
