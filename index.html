@@ -27,7 +27,7 @@
                 border: none;
                 overflow-y: scroll;
             }
-            .input-field.col.s12.conteudocatg{
+            .input-field.col.s12.conteudocatg {
                 display: none;
             }
             .input-field.col.s12.conteudocatg.codEfeito {
@@ -42,6 +42,7 @@
             }
             .conteudocatg textarea.materialize-textarea {
                 z-index: 5000;
+                margin: 0;
             }
             .mais-info {
                 display: none;
@@ -57,16 +58,6 @@
                 font-size: 12;
                 padding: 0 6px;
             }
-            .conteudo .conteudocatg .exemplos {
-                width: 100%;
-                display: inline-block;
-                margin-bottom: 15px;
-                color: red;
-                margin-left: 10px;
-            }
-            .conteudo .conteudocatg .row .col.s12 {
-                margin-bottom: -15px;
-            }
             .linksdotexto #calcular {
                 margin: 10px;
             }
@@ -74,74 +65,64 @@
     </head>
     <body>
         <div class="conteudo">
-            <h3>Text to HTML</h3>
+            <h3>Montando um html</h3>
             <div class="row">
-                <form class="conteudocatg col s6">
+                <form class="conteudocatg col s12">
                     <div class="row">
                         <div class="input-field col s12">
                             <textarea class="materialize-textarea" name="" id="title"></textarea>
-                            <label for="titulo">Título:</label>
+                            <label for="titulo">Títulos:</label>
+                            <span class="helper-text exemplos">Ex.:H2 / Mesa de centro | H3 / Acabamento e limpeza</span>
                         </div>
-                        <label class="exemplos">Ex.:H2 / Batata | H3 / Laranja Lima</label>
                         <div class="linksdotexto">
-                            <div class="input-field col s12">                        
+                            <div class="input-field col s8">                        
                                 <textarea class="materialize-textarea" name="" id="negrito"></textarea>
-                                <label for="negrito">Palavras em negrito:</label>
+                                <label for="negrito">Palavras em <strong>negrito</strong>:</label>
+                                <span class="helper-text exemplos">Ex.:solteiro | cama | móvel</span>
                             </div>
-                            <label class="exemplos">Ex.:verde | azul | arroz</label>
-                            <div class="input-field col s12">
+                            <div class="input-field col s4">
                                 <textarea class="materialize-textarea" name="" id="numPgfNegrito"></textarea>
                                 <label for="numParagrafoNegrito">Nº Paragrafo:</label>
+                                <span class="helper-text exemplos">Ex.:1 | 3 | 4</span>
                             </div>
-                            <label class="exemplos">Ex.:1 | 3 | 4</label>
                         </div>
                         <div class="linksdotexto">
                             <div class="input-field col s12">
                                 <textarea class="materialize-textarea" name="" id="link"></textarea>
                                 <label for="link">Links:</label>
-                            </div>
-                            <label class="exemplos">Ex.:https://www.exemplo.com.br/ | https://www.exemplo.com.br/teste/</label>
-                            <div class="input-field col s12">
+                                <span class="helper-text exemplos">Ex.:https://www.marabraz.com.br/ | https://www.marabraz.com.br/quarto.html</span>
+                            </div>             
+                            <div class="input-field col s8">
                                 <textarea class="materialize-textarea" name="" id="palavra"></textarea>
                                 <label for="palavra">Palavra:</label>
+                                <span class="helper-text exemplos">Ex.:Marabraz | quarto</span>
                             </div>
-                            <label class="exemplos">Ex.:abacaxi | goiaba</label>
                             <span class="waves-effect waves-light btn" data-mais="1">Mais opções</span>
                             <div class="mais-info" data-conteudo="1">
-                                <div class="input-field col s12">
+                                <div class="input-field col s4">
                                     <textarea class="materialize-textarea" name="" id="numPgfLink"></textarea>
                                     <label for="numParagrafoLink">Nº Paragrafo:</label>
+                                    <span class="helper-text exemplos">Ex.: 2 | 2</span>
                                 </div>
-                                <label class="exemplos">Ex.:1 | 2 | 2</label>
                                 <div class="input-field col s12">
                                     <textarea class="materialize-textarea" name="" id="atributos"></textarea>
                                     <label for="atributos">Atributos do link:</label>
+                                    <span class="helper-text exemplos">Ex.:nofollow | follow</span>
                                 </div>
-                                <label class="exemplos">Ex.:nofollow | follow</label>
                             </div>
                         </div>
-                        <div class="input-field col s12">
-                            <textarea class="materialize-textarea" name="" id="text"></textarea>
-                            <label for="texto">Descrição:</label>
-                        </div>
-                        <label class="exemplos">Cole o texto aqui.</label>
                         <span class="waves-effect waves-light btn" data-mais="2">Mais opções</span>
                         <div class="mais-info" data-conteudo="2">
                             <div class="input-field col s12">
                                 <textarea class="materialize-textarea" name="" id="italic"></textarea>
-                                <label for="italico">Palavras em italico:</label>
+                                <label for="italico">Palavras em <span style="font-style: italic;">italico</span>:</label>
+                                <span class="helper-text exemplos">Ex.: <span style="font-style: italic;">Selfie</span></span>
                             </div>
-                            <label class="exemplos">Ex.: Bala | Bola | Bolo</label>
                             <div class="input-field col s12">
                                 <textarea class="materialize-textarea" name="" id="list"></textarea>
                                 <label for="lista">Lista com marcadores:</label>
+                                <span class="helper-text exemplos">Ex.:Altura: 101 cm; | Largura: 100 cm; | Profundidade: 202 cm.</span>
                             </div>
-                            <label class="exemplos">Ex.:texto exemplo;|texto exemplo rosa;|texto exemplo final.</label>
-                            <div class="input-field col s12">
-                                <textarea class="materialize-textarea" name="" id="list2"></textarea>
-                                <label for="lista">Segunda lista com marcadores:</label>
-                            </div>
-                            <label class="exemplos">Ex.:amarelo exemplo;|bolacha exemplo rosa;|ida exemplo final.</label>
                             <div class="linksdotexto">
                                 <div class="input-field col s12">
                                     <textarea class="materialize-textarea" name="" id="densidade"></textarea>
@@ -153,12 +134,23 @@
                                 </div>
                                 <button id="calcular" class="waves-effect waves-light btn">Calcular</button>
                             </div>
+                        </div>                        
+                        <div class="input-field col s12">
+                            <textarea class="materialize-textarea" name="" id="text"></textarea>
+                            <label for="texto">Descrição:</label>
                         </div>
                     </div>
+                    <p>
+                        <label>
+                            <input type="checkbox" id="produto"/>
+                            <span>Html para a pág Produto</span>
+                        </label>
+                    </p>
+                    <p>*Separa todos os elementos por |</p>
                     <button id="buttonConverter" class="waves-effect waves-light btn">Converter</button>
                     <button disabled id="buttonLimpar" class="waves-effect waves-light btn">Limpar campos</button>
                 </form>
-                <div class="col s6">
+                <div class="col s12">
                     <div class="input-field col s12 conteudocatg">
                         <textarea class="materialize-textarea" name="" id="codigohtml"></textarea>
                     </div>
@@ -175,7 +167,6 @@
                 palvNegritas = doc.getElementById('negrito'),
                 numPalvNegritas = doc.getElementById('numPgfNegrito'),
                 listademarcadores = doc.getElementById('list'),
-                lista2demarcadores = doc.getElementById('list2'),
                 palvItalicas = doc.getElementById('italic'),
                 href = doc.getElementById('link'),
                 palavraslink = doc.getElementById('palavra'),
@@ -184,13 +175,15 @@
                 atributoslink = doc.getElementById('atributos'),
                 densidade = doc.getElementById('densidade'),
                 totalpalavras = doc.getElementById('totalpalavras');
+            var ptrp;
 
-            if (localStorage.length !== 0 && !!localStorage.title && !!localStorage.bold && !!localStorage.boldparagraph) {
+            var mensagemerro = document.querySelectorAll(".helper-text.exemplos");
+
+                if (localStorage.length !== 0 && !!localStorage.title && !!localStorage.bold && !!localStorage.boldparagraph) {
                 titles.value = localStorage.title;
                 palvNegritas.value = localStorage.bold;
                 numPalvNegritas.value = localStorage.boldparagraph;
                 listademarcadores.value = localStorage.list;
-                lista2demarcadores.value = localStorage.list2;
                 palvItalicas.value = localStorage.italic;
                 href.value = localStorage.link;
                 palavraslink.value = localStorage.words;
@@ -208,7 +201,6 @@
                     negrito = palvNegritas.value,
                     numParagrafosNegrito = numPalvNegritas.value,
                     list = listademarcadores.value,
-                    list2 = lista2demarcadores.value,
                     italic = palvItalicas.value,
                     links = href.value,
                     palavras = palavraslink.value,
@@ -222,51 +214,44 @@
                     text = text.trim().replace(/\n/g, '</p>\n<p>');
                     text = text.trim().replace(/\<p><\/p>/g, '');
                     textParagrafos = '<p>' + text;
+
                     // colocando os títulos no texto
                     var titlesArry = titulos.split('|');
                     titlesArry.map(function(title, index){
+                        if (title.split('/')[1] == undefined) {
+                            mensagemerro[0].style.color = "red";
+                            window.scrollTo(0, mensagemerro[0].getBoundingClientRect().height);
+                        }
                         var tag = title.split('/')[0].trim().toLowerCase();
                         var titulo = title.split('/')[1].trim();
                         if ( index === 0 ) {
                             text = text.replace(titulo + '</p>', '<' + tag + '>' + titulo +'</' + tag + '>\n');
+                            ptrp = '<' + tag + '>' + titulo +'</' + tag + '>';
                         }
                         text = text.replace('<p>' + titulo + '</p>', '\n<' + tag + '>' + titulo +'</' + tag + '>\n');
 
                         textParagrafos = textParagrafos.replace('<p>' + titulo + '</p>', '');
+                        mensagemerro[0].style.color = "rgba(0,0,0,0.54)";
                     });
                   
                     // colocando a lista com marcadores no texto
                     if(list !== ''){
                         var listArry = list.split('|');
+                        var primeiro = 0;
                         listArry.map(function(li, index){
-                            if (index === 0) {
-                                text = text.replace(li+'</p>', '<ul><li>' + li + '</li>\n\t\r');
-                                textParagrafos = textParagrafos.replace(li+'</p>', '<ul><li>' + li + '</li>\n\t\r');
-                            } else if ((listArry.length-1) === index){
+                            if (primeiro === index) {
+                                text = text.replace(li+'</p>\n', '<ul><li>' + li + '</li>');
+                                textParagrafos = textParagrafos.replace(li+'</p>\n', '<ul><li>' + li + '</li>');
+                            } else if (li.indexOf(".") != -1){
                                 text = text.replace('<p>'+li, '<li>' + li + '</li></ul>');
                                 textParagrafos = textParagrafos.replace('<p>'+li, '<li>' + li + '</li></ul>');
+                                primeiro = index +1;
                             } else {
-                                text = text.replace('<p>'+li+'</p>', '<li>' + li + '</li>\n\t\r');
-                                textParagrafos = textParagrafos.replace('<p>'+li+'</p>', '<li>' + li + '</li>\n\t\r');
+                                text = text.replace('<p>'+li+'</p>\n', '<li>' + li + '</li>');
+                                textParagrafos = textParagrafos.replace('<p>'+li+'</p>\n', '<li>' + li + '</li>');
                             }
                         });
                     }
-                    if(list2 !== ''){
-                        var list2Arry = list2.split('|');
-                        list2Arry.map(function(li, index){
-                            if (index === 0) {
-                                text = text.replace(li+'</p>', '<ul><li>' + li + '</li>\n\t\r');
-                                textParagrafos = textParagrafos.replace(li+'</p>', '<ul><li>' + li + '</li>\n\t\r');
-                            } else if ((list2Arry.length-1) === index){
-                                text = text.replace('<p>'+li, '<li>' + li + '</li></ul>');
-                                textParagrafos = textParagrafos.replace('<p>'+li, '<li>' + li + '</li></ul>');
-                            } else {
-                                text = text.replace('<p>'+li+'</p>', '<li>' + li + '</li>\n\t\r');
-                                textParagrafos = textParagrafos.replace('<p>'+li+'</p>', '<li>' + li + '</li>\n\t\r');
-                            }
-                        });
-                    }
-
                     textArry = textParagrafos.split('<p>');
 
                     var negritoArry = negrito.split('|'),
@@ -312,6 +297,17 @@
                         text = text.replace(parteTexto, paragrafos);
                     });
 
+                    if(document.querySelector("#produto").checked == true) {
+                        text = text.trim().replace(/\n\n\n/gi, '\n');
+                        text = text.trim().replace(/\n\n/gi, '\n');
+                        text = text.trim().replace(/\n/gi, '\n<br/>\n');
+                        text = text.trim().replace(ptrp+'\n<br/>', '<style>\n.description ul {\n   list-style: disc;\n   padding-left: 19px;\n}\n</style>');
+                    }
+                    
+                    text = text.trim().replace(new RegExp('</li>', 'gi'), '</li>\n');
+                    text = text.trim().replace(new RegExp('<p><ul>', 'gi'), '<ul>');
+                    text = text.trim().replace(new RegExp('</ul></p>', 'gi'), '</ul>');
+                    
                     html_beautify(text);
                     doc.getElementById('codigohtml').value = text + '</p>';
                     doc.querySelector('.input-field.col.s12.conteudocatg').classList.add("codEfeito");
@@ -322,7 +318,6 @@
                     localStorage.bold = negrito;
                     localStorage.boldparagraph = numParagrafosNegrito;
                     localStorage.list = list;
-                    localStorage.list2 = list2;
                     localStorage.italic = italic;
                     localStorage.link = links;
                     localStorage.words = palavras;
@@ -339,7 +334,6 @@
                 palvNegritas.value = ''; palvNegritas.style.height = 0;
                 numPalvNegritas.value = ''; numPalvNegritas.style.height = 0;
                 listademarcadores.value = ''; listademarcadores.style.height = 0;
-                lista2demarcadores.value = ''; lista2demarcadores.style.height = 0;
                 palvItalicas.value = ''; palvItalicas.style.height = 0;
                 href.value = ''; href.style.height = 0;
                 palavraslink.value = ''; palavraslink.style.height = 0;
@@ -384,6 +378,7 @@
 
                 var linhasArray = this.value.split('\n');
                 var localclick = this.value.substr(0, this.selectionStart).split("\n").length;
+                console.log(localclick);
                 var totalpularlinhas = linhasArray.length;
 
                 this.value = linhasArray.slice(0,localclick).join('\n') + '\n' + imagem.outerHTML + '\n\n' + linhasArray.slice(localclick,totalpularlinhas).join('\n');
@@ -392,16 +387,31 @@
                 el.preventDefault();
                 // palavras-chaves 
                 var palavras = descricao.value.replace(/(\r\n|\n|\r|,|"|\.|\?|!|\)|\(|_|:|;|')/g," ").trim();
-                var stopWorks = ['a','agora','ainda','alguém','algum','alguma','algumas','alguns','ampla','amplas','amplo','amplos','ante','antes','ao','aos','após','aquela','aquelas','aquele','aqueles','aquilo','as','até, através, cada, coisa, coisas, com, como, contra, contudo, da, daquele, daqueles, das, de, dela, delas, dele, deles, depois, dessa, dessas, desse, desses, desta, destas, deste, deste, destes, deve, devem, devendo, dever, deverá, deverão, deveria, deveriam, devia, deviam, disse, disso, disto, dito, diz, dizem, do, dos, e, é, ela, elas, ele, eles, em, enquanto, entre, era, essa, essas, esse, esses, esta, está, estamos, estão, estas, estava, estavam, estávamos, este, estes, estou, eu, fazendo, fazer, feita, feitas, feito, feitos, foi, for, foram, fosse, fossem, grande, grandes, há, isso, isto, já, la, lá, lhe, lhes, lo, mas, me, mesma, mesmas, mesmo, mesmos, meu, meus, minha, minhas, muita, muitas, muito, muitos, na, não, nas, nem, nenhum, nessa, nessas, nesta, nestas, ninguém, no, nos, nós, nossa, nossas, nosso, nossos, num, numa, nunca, o, os, ou, outra, outras, outro, outros, para, pela, pelas, pelo, pelos, pequena, pequenas, pequeno, pequenos, per, perante, pode, pude, podendo, poder, poderia, poderiam, podia, podiam, pois, por, porém, porque, posso, pouca, poucas, pouco, poucos, primeiro, primeiros, própria, próprias, próprio, próprios, quais, qual, quando, quanto, quantos, que, quem, são, se, seja, sejam, sem, sempre, sendo, será, serão, seu, seus, si, sido, só, sob, sobre, sua, suas, talvez, também, tampouco, te, tem, tendo, tenha, ter, teu, teus, ti, tido, tinha, tinham, toda, todas, todavia, todo, todos, tu, tua, tuas, tudo, última, últimas, último, últimos, um, uma, umas, uns, vendo, ver, vez, vindo, vir, vos, vós']
-                var palavrasArry = palavras.split(/\s+/g);
+                var stopwords = ['de','a','o','que','e','do','da','em','um','para','é','com','não','uma','os','no','se','na','por','mais','as','dos','como','mas','foi','ao','ele','das','tem','à','seu','sua','ou',
+                'ser','quando','muito','há','nos','já','está','eu','também','só','pelo','pela','até','isso','ela','entre','era','depois','sem','mesmo','aos','ter','seus','quem','nas','me','esse','eles','estão',
+                'você','tinha','foram','essa','num','nem','suas','meu','às','minha','têm','numa','pelos','elas','havia','seja','qual','será','nós','tenho','lhe','deles','essas','esses','pelas','este','fosse','dele',
+                'tu','te','vocês','vos','lhes','meus','minhas','teu','tua','teus','tuas','nosso','nossa','nossos','nossas','dela','delas','esta','estes','estas','aquele','aquela','aqueles','aquelas','isto','aquilo',
+                'estou','está','estamos','estão','estive','esteve','estivemos','estiveram','estava','estávamos','estavam','estivera','estivéramos','esteja','estejamos','estejam','estivesse','estivéssemos',
+                'estivessem','estiver','estivermos','estiverem','hei','há','havemos','hão','houve','houvemos','houveram','houvera','houvéramos','haja','hajamos','hajam','houvesse','houvéssemos','houvessem','houver',
+                'houvermos','houverem','houverei','houverá','houveremos','houverão','houveria','houveríamos','houveriam','sou','somos','são','era','éramos','eram','fui','foi','fomos','foram','fora','fôramos','seja',
+                'sejamos','sejam','fosse','fôssemos','fossem','for','formos','forem','serei','será','seremos','serão','seria','seríamos','seriam','tenho','tem','temos','tém','tinha','tínhamos','tinham','tive','teve',
+                'tivemos','tiveram','tivera','tivéramos','tenha','tenhamos','tenham','tivesse','tivéssemos','tivessem','tiver','tivermos','tiverem','terei','terá','teremos','terão','teria','teríamos','teriam'];
+                var palavrasArry = palavras.toLowerCase().split(/\s+/g);
+                stopwords.map(function(word){
+                    var i = palavrasArry.indexOf(word);
+                    while(i >= 0){
+                        palavrasArry.splice(i, 1);
+                        i = palavrasArry.indexOf(word);
+                    }
+                });
                 var total = palavrasArry.length;
                 var p, cont = 0;
                 var densi = '';
                 palavrasArry.map(function(palavra, index){
                     if (!densi.toLowerCase().includes(palavra.toLowerCase()) && palavra.length > 3){
                         p = descricao.value.split(palavra).length;
-                        if ( p > 3 && cont < 20) {
-                            densi += '\n' + palavra + ': ' + (p/total);
+                        if (p > 3 && cont < 20) {
+                            densi += palavra + ': ' + ((p/total)*100).toFixed(2) + '%\n';
                             cont++;
                         }
                     }
