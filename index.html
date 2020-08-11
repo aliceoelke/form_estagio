@@ -13,7 +13,7 @@
                 width: 1200px;
             }
             .conteudo form.conteudocatg,
-            .input-field.col.s12.conteudocatg {
+            div.col.s12.conteudocatg {
                 border: 1px solid #eee;
                 border-radius: 4px;
                 background-color: #fff;
@@ -22,15 +22,18 @@
                 padding: 20px;
                 margin-top: 0;
             }
+            .conteudo form.conteudocatg {
+                margin-bottom: 30px;
+            }
             #codigohtml {
                 min-height: 500px;
                 border: none;
                 overflow-y: scroll;
             }
-            .input-field.col.s12.conteudocatg {
+            div.col.s12.conteudocatg {
                 display: none;
             }
-            .input-field.col.s12.conteudocatg.codEfeito {
+            div.col.s12.conteudocatg.codEfeito {
                 display: block;
             }
             .linksdotexto {
@@ -60,6 +63,63 @@
             }
             .linksdotexto #calcular {
                 margin: 10px;
+            }
+            #resultado strong {
+                font-weight: 700;
+            }
+            #resultado.catg p {
+                margin: 0 0 1.5em;
+                color: #575757;
+            }
+            #resultado.produto p {
+                font-size: 14px;
+                color: #575757;
+                margin: 0;
+            }
+            #resultado.catg h3 {
+                font-size: 18px;
+                text-transform: uppercase;
+                font-weight: 400;
+                margin: 0 0 10px;
+                line-height: 1.4;
+                text-rendering: optimizeSpeed;
+                color: #575757;
+            }
+            #resultado.produto h3 {
+                font-size: 18px;
+                text-transform: uppercase;
+                font-weight: 400;
+                margin: 0;
+            }
+            #resultado.catg h2 {
+                font-size: 24px;
+                font-weight: 400;
+                text-transform: uppercase;
+                margin: 0 0 .5em;
+                line-height: 1.2;
+                text-rendering: optimizeLegibility;
+                color: #575757;
+            }
+            #resultado.produto h2 {
+                margin: 0;
+                font-weight: 700;
+                font-size: 14px;
+                text-transform: none;
+                margin-bottom: -15px;
+                color: #575757;
+            }
+            #resultado a {
+                color: #1a3979;
+                text-decoration: underline;
+            }
+            #resultado ul, ul:not(.browser-default)>li {
+                list-style: disc;
+            }
+            #resultado ul {
+                padding-left: 19px;                
+            }
+            #resultado.produto ul {
+                margin: 0;
             }
         </style>
     </head>
@@ -97,13 +157,13 @@
                                 <label for="palavra">Palavra:</label>
                                 <span class="helper-text exemplos">Ex.:Marabraz | quarto</span>
                             </div>
+                            <div class="input-field col s4">
+                                <textarea class="materialize-textarea" name="" id="numPgfLink"></textarea>
+                                <label for="numParagrafoLink">Nº Paragrafo:</label>
+                                <span class="helper-text exemplos">Ex.: 2 | 2</span>
+                            </div>
                             <span class="waves-effect waves-light btn" data-mais="1">Mais opções</span>
                             <div class="mais-info" data-conteudo="1">
-                                <div class="input-field col s4">
-                                    <textarea class="materialize-textarea" name="" id="numPgfLink"></textarea>
-                                    <label for="numParagrafoLink">Nº Paragrafo:</label>
-                                    <span class="helper-text exemplos">Ex.: 2 | 2</span>
-                                </div>
                                 <div class="input-field col s12">
                                     <textarea class="materialize-textarea" name="" id="atributos"></textarea>
                                     <label for="atributos">Atributos do link:</label>
@@ -150,10 +210,11 @@
                     <button id="buttonConverter" class="waves-effect waves-light btn">Converter</button>
                     <button disabled id="buttonLimpar" class="waves-effect waves-light btn">Limpar campos</button>
                 </form>
-                <div class="col s12">
-                    <div class="input-field col s12 conteudocatg">
+                <div class="col s12 conteudocatg">
+                    <div class="input-field col s6">
                         <textarea class="materialize-textarea" name="" id="codigohtml"></textarea>
                     </div>
+                    <div id="resultado" class="col s6"></div>
                 </div>
             </div>
         </div>
@@ -242,7 +303,7 @@
                             if (primeiro === index) {
                                 text = text.replace(li+'</p>\n', '<ul><li>' + li + '</li>');
                                 textParagrafos = textParagrafos.replace(li+'</p>\n', '<ul><li>' + li + '</li>');
-                            } else if (li.indexOf(".") != -1){
+                            } else if (li.slice(-1) == '.'){
                                 text = text.replace('<p>'+li, '<li>' + li + '</li></ul>');
                                 textParagrafos = textParagrafos.replace('<p>'+li, '<li>' + li + '</li></ul>');
                                 primeiro = index +1;
@@ -278,13 +339,13 @@
                         // colocando os links nos paragrafos
                         linksArry.map(function (link, iLink){
                             if (atributo !== '' && atributosArry[iLink] !== 'null' && links !== '' && palavras !== '' && numParagrafosLink !== ''){
-                                paragrafos = paragrafos.replace(palavrasArry[iLink], '<a href="' + link + '" target="_blank" style="text-decoration:underline;" rel="'+ atributosArry[iLink] +'">' + palavrasArry[iLink] + '</a>')
+                                paragrafos = paragrafos.replace(palavrasArry[iLink], '<a href="' + link + '" target="_blank" style="text-decoration:underline;" rel="'+ atributosArry[iLink] +'">' + palavrasArry[iLink] + '</a>');
                             } else if(links !== '' && palavras !== '' && numParagrafosLink !== ''){
                                 if(numParagrafosLinkArry[iLink] == index) {
-                                    paragrafos = paragrafos.replace(palavrasArry[iLink], '<a href="' + link + '" target="_blank" style="text-decoration:underline;">' + palavrasArry[iLink] + '</a>')
+                                    paragrafos = paragrafos.replace(palavrasArry[iLink], '<a href="' + link + '" target="_blank" style="text-decoration:underline;">' + palavrasArry[iLink] + '</a>');
                                 }                                
                             } else if (links !== '' && palavras !== ''){
-                                paragrafos = paragrafos.replace(new RegExp(palavrasArry[iLink], 'g'), '<a href="' + link + '" target="_blank" style="text-decoration:underline;">' + palavrasArry[iLink] + '</a>')
+                                paragrafos = paragrafos.replace(new RegExp(palavrasArry[iLink], 'g'), '<a href="' + link + '" target="_blank" style="text-decoration:underline;">' + palavrasArry[iLink] + '</a>');
                             }
                         });
                         // colocando as palavras italicas no texto
@@ -302,6 +363,16 @@
                         text = text.trim().replace(/\n\n/gi, '\n');
                         text = text.trim().replace(/\n/gi, '\n<br/>\n');
                         text = text.trim().replace(ptrp+'\n<br/>', '<style>\n.description ul {\n   list-style: disc;\n   padding-left: 19px;\n}\n</style>');
+                        doc.getElementById('resultado').classList.add("produto");
+                        if(doc.querySelector('#resultado.catg')) {
+                            doc.getElementById('resultado').classList.remove("catg");
+                        }
+                    }
+                    else {
+                        doc.getElementById('resultado').classList.add("catg");
+                        if(doc.querySelector('#resultado.produto')) {
+                            doc.getElementById('resultado').classList.remove("produto");
+                        }
                     }
                     
                     text = text.trim().replace(new RegExp('</li>', 'gi'), '</li>\n');
@@ -310,7 +381,8 @@
                     
                     html_beautify(text);
                     doc.getElementById('codigohtml').value = text + '</p>';
-                    doc.querySelector('.input-field.col.s12.conteudocatg').classList.add("codEfeito");
+                    doc.querySelector('div.col.s12.conteudocatg').classList.add("codEfeito");
+                    doc.getElementById('resultado').innerHTML = text + '</p>';
                     doc.getElementById('buttonLimpar').removeAttribute('disabled');
 
                     //salvando conteúdo
@@ -342,7 +414,7 @@
                 densidade.value = ''; densidade.style.height = 0;
                 totalpalavras.value = ''; totalpalavras.style.height = 0;
                 doc.getElementById('codigohtml').value = '';
-                doc.querySelector('.input-field.col.s12.conteudocatg').classList.remove("codEfeito");
+                doc.querySelector('div.col.s12.conteudocatg').classList.remove("codEfeito");
                 doc.getElementById('buttonLimpar').setAttribute('disabled', 'disabled');
             });
 
@@ -378,10 +450,10 @@
 
                 var linhasArray = this.value.split('\n');
                 var localclick = this.value.substr(0, this.selectionStart).split("\n").length;
-                console.log(localclick);
                 var totalpularlinhas = linhasArray.length;
 
                 this.value = linhasArray.slice(0,localclick).join('\n') + '\n' + imagem.outerHTML + '\n\n' + linhasArray.slice(localclick,totalpularlinhas).join('\n');
+                doc.querySelector('#resultado').innerHTML = linhasArray.slice(0,localclick).join('\n') + '\n' + imagem.outerHTML + '\n\n' + linhasArray.slice(localclick,totalpularlinhas).join('\n');
             });
             doc.getElementById('calcular').addEventListener('click', function(el){
                 el.preventDefault();
